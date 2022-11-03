@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{js/echarts.min.js}"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height: 400px"></div>
+
+    <script  th:inline="javascript">
+        var myChart = echarts.init(document.getElementById("main"));
+        var dateList = [[${xList}]];
+        var confirmList = [[${yList}]];
+        console.log(dateList);;
+        var option = {
+            title: {
+                text: '全国新增本土确诊趋势'
+            },
+            tooltip: {},
+            legend: {
+                data: ['确诊']
+            },
+            xAxis: {
+                data: dateList
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '确诊',
+                    type: 'line',
+                    data: confirmList,
+                    smooth: true,
+                    color:'rgb(229, 118, 49)'
+
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

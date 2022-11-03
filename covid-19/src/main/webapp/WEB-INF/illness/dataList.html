@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{list.title}">小罗疫情数据展示</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/jquery.pagination.js"></script>
+    <style>
+        body{
+            background-color: #999999;
+        }
+        .data{
+            width: 70%;
+            margin: auto;
+            background-color: white;
+            height: 2100px;
+        }
+        .head{
+            margin-bottom: 200px;
+            position: absolute;
+            height: 50px;
+            width: 500px;
+            right: 0px;
+        }
+        .table{
+            margin-top: 50px;
+            height: 500px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #graph{
+            width: 60%;
+            height: 500px;
+            margin: 129px auto;
+        }
+        #Map{
+            width: 80%;
+            height: 500px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="data">
+
+
+<div class="head">
+    <label>
+        <a class="btn btn-sm" th:href="@{/getData(lan='zh_CN')}">中⽂</a>
+        <a class="btn btn-sm" th:href="@{/getData(lan='en_US')}">English</a>
+    </label>
+</div>
+
+
+<br>
+    <div class="table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th th:text="#{list.table.name1}">地区</th>
+                    <th th:text="#{list.table.name2}">新增确诊</th>
+                    <th th:text="#{list.table.name3}">现有确诊</th>
+                    <th th:text="#{list.table.name4}">累计确诊</th>
+                    <th th:text="#{list.table.name5}">累计死亡</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="page" th:each="data:${dataList}">
+                    <td th:text="${data.name}"></td>
+                    <td th:text="${data.local_confirm_add}"></td>
+                    <td th:text="${data.nowConfirm}"></td>
+                    <td th:text="${data.confirm}"></td>
+                    <td th:text="${data.dead}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="..." style="text-align: center">
+            <ul class="pagination">
+                <li class="aa"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="graph">
+    </div>
+    <h1 style="padding-left: 20px;padding-bottom: 20px">全国疫情数据（含港澳台）</h1>
+    <p></p>
+    <div id="Map">
+    </div>
+</div>
+<script>
+    $.ajax({
+                 type: "GET",
+                 url: "/ssm_COVID_19/getPage",
+                 dataType: "json",
+                 success: function(data){
+                     let index = Math.ceil(data/5);
+                     for (let i=1;i<=index;i++){
+                         let oLi = document.createElement("li");
+                         let oSpan = document.createElement("span");
+                         let oA = document.createElement("a");
+                         oA.href="/ssm_COVID_19/getData?Page="+i;
+                         oA.innerHTML=i;
+                         oA.className="aa";
+
+                         oSpan.className="sr-only";
+                         oSpan.innerHTML="(current)";
+                         oLi.appendChild(oA);
+                         oA.appendChild(oSpan);
+                         $(".pagination").append(oLi);
+                     }
+                     document.getElementsByClassName("pagination")[0].innerHTML+="<li><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&raquo;</span></a></li>"
+                 }
+             });
+    (function graphandMap() {
+        $("#graph").load("/ssm_COVID_19/getGraphData")
+        $("#Map").load("/ssm_COVID_19/getMapData")
+    }())
+</script>
+</body>
+</html>
