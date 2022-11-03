@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--折线图设计-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luochao.dao.Covid19GraphdataMapper">
+  <resultMap id="BaseResultMap" type="com.luochao.entity.Covid19Graphdata">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="local_confirmadd" jdbcType="INTEGER" property="localConfirmadd" />
+    <result column="localinfectionadd" jdbcType="INTEGER" property="localinfectionadd" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from covid19_graphdata
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.luochao.entity.Covid19Graphdata">
+    insert into covid19_graphdata (id, local_confirmadd, localinfectionadd, 
+      date, year)
+    values (#{id,jdbcType=BIGINT}, #{localConfirmadd,jdbcType=INTEGER}, #{localinfectionadd,jdbcType=INTEGER}, 
+      #{date,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.luochao.entity.Covid19Graphdata">
+    update covid19_graphdata
+    set local_confirmadd = #{localConfirmadd,jdbcType=INTEGER},
+      localinfectionadd = #{localinfectionadd,jdbcType=INTEGER},
+      date = #{date,jdbcType=VARCHAR},
+      year = #{year,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, local_confirmadd, localinfectionadd, date, year
+    from covid19_graphdata
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, local_confirmadd, localinfectionadd, date, year
+    from covid19_graphdata
+  </select>
+</mapper>

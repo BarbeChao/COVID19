@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--扫包-->
+    <context:component-scan base-package="com.luochao.service"></context:component-scan>
+
+<!--    扫描外部文件-->
+    <context:property-placeholder location="classpath:druid.properties"></context:property-placeholder>
+
+<!--    管理数据源 通过连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.class}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+<!--    管理mybatis工厂-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--连接上面连接池的数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--引入配置文件-->
+        <property name="configLocation" value="classpath:mybatis.xml"></property>
+        <!--如果再映射Mapper配置文件的话，那么在核心配置文件中就不用再配置Mapper核心文件-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+    </bean>
+        <!--动态代理Mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--以以上的MyBatis工厂创建一个一下包下的动态代理Mapper-->
+        <property name="sqlSessionFactoryBeanName" value="factory"></property>
+        <property name="basePackage" value="com.luochao.dao"></property>
+    </bean>
+<!--    管理事务-->
+</beans>
