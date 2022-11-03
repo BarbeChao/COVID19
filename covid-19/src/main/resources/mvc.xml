@@ -14,7 +14,7 @@ http://www.alibaba.com/schema/stat
  http://www.springframework.org/schema/task
  http://www.springframework.org/schema/task/spring-task.xsd">
 <!--    扫包-->
-    <context:component-scan base-package="com.luochao.controller"></context:component-scan>
+    <context:component-scan base-package="luochao.controller"></context:component-scan>
 
 <!--    视图解析器-->
 <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
@@ -67,6 +67,6 @@ http://www.alibaba.com/schema/stat
     <task:annotation-driven/>
     <context:annotation-config></context:annotation-config>
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
-    <context:component-scan base-package="com.luochao.task"></context:component-scan>
+    <context:component-scan base-package="luochao.task"></context:component-scan>
 
 </beans>

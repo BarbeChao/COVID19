@@ -3,20 +3,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.luochao.dao.DataDao">
+<mapper namespace="luochao.dao.DataDao">
 
 <!--    查询疫情数据-->
-    <select id="selectData" resultType="com.luochao.entity.Covid19_Data">
+    <select id="selectData" resultType="luochao.entity.Covid19_Data">
         select id,name,local_confirm_add,nowConfirm,confirm,dead from covid19_data limit #{PageIndex} , 5;
     </select>
     <!--    查询疫情数据-->
-    <select id="selectList" resultType="com.luochao.entity.Covid19_Data">
+    <select id="selectList" resultType="luochao.entity.Covid19_Data">
         select id,name,local_confirm_add,nowConfirm,confirm,dead from covid19_data;
     </select>
 
 
 <!--    插入疫情数据-->
-    <insert id="insertData" parameterType="com.luochao.entity.Covid19_Data">
+    <insert id="insertData" parameterType="luochao.entity.Covid19_Data">
         insert into covid19_data values(#{id},#{name},#{local_confirm_add},#{nowConfirm},#{confirm},#{dead});
     </insert>
 <!--    删除所有疫情数据-->

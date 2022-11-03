@@ -1,7 +1,7 @@
 package luochao.service;
 
-import com.luochao.entity.Covid19Graphdata;
-import com.luochao.entity.Covid19_Data;
+import luochao.entity.Covid19Graphdata;
+import luochao.entity.Covid19_Data;
 
 import java.util.List;
 

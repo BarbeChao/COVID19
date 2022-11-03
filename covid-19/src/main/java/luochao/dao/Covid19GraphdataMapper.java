@@ -1,6 +1,6 @@
 package luochao.dao;
 
-import com.luochao.entity.Covid19Graphdata;
+import luochao.entity.Covid19Graphdata;
 
 import java.util.List;
 

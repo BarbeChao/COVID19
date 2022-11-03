@@ -1,8 +1,8 @@
 package luochao.task;
 
-import com.luochao.dao.DataDao;
-import com.luochao.entity.Covid19_Data;
-import com.luochao.util.GsonUtil;
+import luochao.dao.DataDao;
+import luochao.entity.Covid19_Data;
+import luochao.util.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;

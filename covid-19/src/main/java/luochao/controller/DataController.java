@@ -1,12 +1,13 @@
 package luochao.controller;
 
 import com.google.gson.Gson;
-import com.luochao.bean.MapBean;
-import com.luochao.entity.Covid19Graphdata;
-import com.luochao.entity.Covid19_Data;
-import com.luochao.service.DataService;
-import com.luochao.util.GsonUtil;
+import luochao.bean.MapBean;
+import luochao.entity.Covid19Graphdata;
+import luochao.entity.Covid19_Data;
+import luochao.service.DataService;
+import luochao.util.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;

@@ -1,11 +1,11 @@
 package luochao.service.impl;
 
-import com.luochao.dao.Covid19GraphdataMapper;
-import com.luochao.dao.DataDao;
-import com.luochao.entity.Covid19Graphdata;
-import com.luochao.entity.Covid19_Data;
-import com.luochao.service.DataService;
-import com.luochao.util.GsonUtil;
+import luochao.dao.Covid19GraphdataMapper;
+import luochao.dao.DataDao;
+import luochao.entity.Covid19Graphdata;
+import luochao.entity.Covid19_Data;
+import luochao.service.DataService;
+import luochao.util.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

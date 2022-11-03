@@ -7,7 +7,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 https://www.springframework.org/schema/context/spring-context.xsd">
     <!--扫包-->
-    <context:component-scan base-package="com.luochao.service"></context:component-scan>
+    <context:component-scan base-package="luochao.service"></context:component-scan>
 
 <!--    扫描外部文件-->
     <context:property-placeholder location="classpath:druid.properties"></context:property-placeholder>
@@ -32,7 +32,7 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--以以上的MyBatis工厂创建一个一下包下的动态代理Mapper-->
         <property name="sqlSessionFactoryBeanName" value="factory"></property>
-        <property name="basePackage" value="com.luochao.dao"></property>
+        <property name="basePackage" value="luochao.dao"></property>
     </bean>
 <!--    管理事务-->
 </beans>

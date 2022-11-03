@@ -1,7 +1,7 @@
 package luochao.util;
 
 import com.google.gson.Gson;
-import com.luochao.entity.Covid19_Data;
+import luochao.entity.Covid19_Data;
 
 import java.util.ArrayList;
 import java.util.HashMap;

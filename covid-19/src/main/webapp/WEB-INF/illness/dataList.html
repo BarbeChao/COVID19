@@ -95,7 +95,7 @@
 <script>
     $.ajax({
                  type: "GET",
-                 url: "/ssm_COVID_19/getPage",
+                 url: "./getPage",
                  dataType: "json",
                  success: function(data){
                      let index = Math.ceil(data/5);
@@ -103,7 +103,7 @@
                          let oLi = document.createElement("li");
                          let oSpan = document.createElement("span");
                          let oA = document.createElement("a");
-                         oA.href="/ssm_COVID_19/getData?Page="+i;
+                         oA.href="./getData?Page="+i;
                          oA.innerHTML=i;
                          oA.className="aa";
 
@@ -117,8 +117,8 @@
                  }
              });
     (function graphandMap() {
-        $("#graph").load("/ssm_COVID_19/getGraphData")
-        $("#Map").load("/ssm_COVID_19/getMapData")
+        $("#graph").load("./getGraphData")
+        $("#Map").load("./getMapData")
     }())
 </script>
 </body>
