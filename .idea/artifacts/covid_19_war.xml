@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="covid-19:war">
+    <output-path>$PROJECT_DIR$/covid-19/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>covid-19</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="covid-19.war">
+      <element id="artifact" artifact-name="covid-19:war exploded" />
+    </root>
+  </artifact>
+</component>
